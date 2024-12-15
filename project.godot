@@ -19,3 +19,4 @@ config/icon="res://icon.svg"
 
 GlobalSteam="*res://lib/steam.gd"
 Lobby="*res://lib/lobby.gd"
+GlobalNode="*res://lib/node.gd"

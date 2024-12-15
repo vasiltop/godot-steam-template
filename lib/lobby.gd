@@ -1,5 +1,7 @@
 extends Node
 
+signal lobby_refresh
+
 var id: int = 0
 var lobbies: Array = []
 var members: Array = []
@@ -40,6 +42,7 @@ func refreshLobbyList(name: String = ""):
 
 func _on_lobby_match_list(lobbies: Array):
 	self.lobbies = lobbies
+	lobby_refresh.emit()
 	
 func join(lobby_id: int):
 	Steam.joinLobby(lobby_id)

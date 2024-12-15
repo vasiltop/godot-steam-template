@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://t1recvlbg227"]
+[gd_scene load_steps=2 format=3 uid="uid://t1recvlbg227"]
+
+[ext_resource type="Script" path="res://menus/lobby_menu/lobby_menu.gd" id="1_ploga"]
 
 [node name="LobbyMenu" type="GridContainer"]
 anchors_preset = 15
@@ -9,6 +11,7 @@ grow_vertical = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 2
+script = ExtResource("1_ploga")
 
 [node name="Search" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -33,6 +36,18 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Results"
 horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Results"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LobbyList" type="GridContainer" parent="Results/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
 
 [node name="Create" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -63,3 +78,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Lobby"
 horizontal_alignment = 1
+
+[node name="MemberList" type="VBoxContainer" parent="Lobby"]
+layout_mode = 2
