@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://t1recvlbg227"]
+
+[node name="LobbyMenu" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Search" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Search"]
+layout_mode = 2
+text = "Search"
+horizontal_alignment = 1
+
+[node name="Name" type="LineEdit" parent="Search"]
+layout_mode = 2
+placeholder_text = "name"
+
+[node name="Results" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Results"]
+layout_mode = 2
+text = "Results"
+horizontal_alignment = 1
+
+[node name="Create" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Create"]
+layout_mode = 2
+text = "Create Lobby"
+horizontal_alignment = 1
+
+[node name="Name" type="LineEdit" parent="Create"]
+layout_mode = 2
+placeholder_text = "name"
+
+[node name="MaxPlayers" type="LineEdit" parent="Create"]
+layout_mode = 2
+placeholder_text = "max players"
+
+[node name="Button" type="Button" parent="Create"]
+layout_mode = 2
+text = "Create"
+
+[node name="Lobby" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Lobby"]
+layout_mode = 2
+text = "Lobby"
+horizontal_alignment = 1
