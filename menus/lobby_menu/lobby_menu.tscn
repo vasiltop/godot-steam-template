@@ -67,6 +67,14 @@ placeholder_text = "name"
 layout_mode = 2
 placeholder_text = "max players"
 
+[node name="Type" type="ItemList" parent="Create"]
+layout_mode = 2
+auto_height = true
+item_count = 3
+item_0/text = "Public"
+item_1/text = "Friends Only"
+item_2/text = "Private"
+
 [node name="Button" type="Button" parent="Create"]
 layout_mode = 2
 text = "Create"
@@ -76,8 +84,12 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Lobby"]
 layout_mode = 2
-text = "Lobby"
+text = "Lobby: None"
 horizontal_alignment = 1
+
+[node name="Leave" type="Button" parent="Lobby"]
+layout_mode = 2
+text = "Leave"
 
 [node name="MemberList" type="VBoxContainer" parent="Lobby"]
 layout_mode = 2
