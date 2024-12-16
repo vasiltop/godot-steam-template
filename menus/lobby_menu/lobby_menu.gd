@@ -75,5 +75,6 @@ func _process(delta):
 
 func start_game():
 	Packet.send(0, {
-		"type": "start"
+		"type": "switch_level",
+		"level": "res://levels/test/test.tscn"
 	}, Steam.P2P_SEND_RELIABLE)

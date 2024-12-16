@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	Packet.start.connect(start)
+	Packet.switch_level.connect(switch_level)
 	
-func start(level: String):
+func switch_level(level: String):
 	get_tree().change_scene_to_file(level)

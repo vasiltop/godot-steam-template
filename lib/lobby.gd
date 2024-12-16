@@ -16,7 +16,7 @@ func _ready():
 	join_from_args()
 
 func join_from_args():
-	var args = OS.get_cmdline_args()
+	var args: PackedStringArray = OS.get_cmdline_args()
 	
 	if args.size() <= 0: return
 	if args[0] != "+connect_lobby": return
