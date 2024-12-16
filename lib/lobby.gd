@@ -42,7 +42,7 @@ func _on_lobby_created(connect: int, lobby_id: int):
 
 func refreshLobbyList(name: String = ""):
 	
-	#Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	if name != "":
 		Steam.addRequestLobbyListStringFilter("name", name, Steam.LOBBY_COMPARISON_EQUAL)
 	Steam.requestLobbyList()

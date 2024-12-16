@@ -39,6 +39,7 @@ func update_search(text: String):
 	Lobby.refreshLobbyList(text)
 
 func update_lobbies():
+	
 	GlobalNode.destroy_children(lobby_list)
 	
 	for lobby in Lobby.lobbies:
@@ -61,6 +62,17 @@ func update_members():
 		member_list.add_child(inst)
 		var n = Steam.getFriendPersonaName(member["id"])
 		inst.get_node("Name").text = n
+
+const LOBBY_REFRESH_TIME: float = 1
+var lobby_refresh_timer: float = 0
+
+func _process(delta):
+	lobby_refresh_timer += delta
+	
+	if lobby_refresh_timer >= LOBBY_REFRESH_TIME:
+		print("refresh")
+		lobby_refresh_timer = 0
+		Lobby.refreshLobbyList(search_name_input.text)
 
 func start_game():
 	Packet.send(0, {
