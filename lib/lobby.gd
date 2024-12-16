@@ -78,3 +78,6 @@ func update_lobby_members():
 		var m_id = Steam.getLobbyMemberByIndex(id, i)
 		var name = Steam.getFriendPersonaName(m_id)
 		members.append({"id": m_id, "name": name})
+
+func is_leader():
+	return Steam.getLobbyOwner(id) == GlobalSteam.id

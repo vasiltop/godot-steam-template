@@ -9,11 +9,13 @@ extends GridContainer
 @onready var create_type_input = $Create/Type
 @onready var leave_lobby_button = $Lobby/Leave
 @onready var lobby_title = $Lobby/Title
+@onready var start_game_button = $Lobby/Start
 
 const LOBBY = preload("res://menus/lobby_menu/lobby/lobby.tscn")
 const MEMBER = preload("res://menus/lobby_menu/member/member.tscn")
 
 func _ready():
+	start_game_button.pressed.connect(start_game)
 	search_name_input.text_changed.connect(update_search)
 	create_button.pressed.connect(create_lobby)
 	leave_lobby_button.pressed.connect(Lobby.leave)
@@ -48,6 +50,7 @@ func update_lobbies():
 		inst.init(name, lobby)
 
 func update_members():
+	start_game_button.visible = Lobby.is_leader()
 	var name = Steam.getLobbyData(Lobby.id, "name")
 	if name == "": name = "None"
 	lobby_title.text = "Lobby: " + name
@@ -58,3 +61,8 @@ func update_members():
 		member_list.add_child(inst)
 		var n = Steam.getFriendPersonaName(member["id"])
 		inst.get_node("Name").text = n
+
+func start_game():
+	Packet.send(0, {
+		"type": "start"
+	}, Steam.P2P_SEND_RELIABLE)
