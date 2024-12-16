@@ -1,5 +1,7 @@
 extends Node
 
+signal start(file: String)
+
 func _process(delta):
 	if Lobby.id != 0:
 		read()
@@ -10,9 +12,12 @@ func read():
 	if size <= 0: return
 	var p = Steam.readP2PPacket(size, 0)
 	
-	var sender = p['remote_steam_id']
+	var sender = p['steam_id_remote']
 	var bytes = p['data']
 	var data = bytes_to_var(bytes)
+	
+	match data['type']:
+		"start": start.emit("res://levels/test/test.tscn")
 
 func send(target: int, data: Dictionary, type: int):
 	var d: PackedByteArray
@@ -20,7 +25,6 @@ func send(target: int, data: Dictionary, type: int):
 	
 	if target == 0:
 		for member in Lobby.members:
-			if member['id'] != GlobalSteam.id:
-				Steam.sendP2PPacket(member['id'], d, type)
+			Steam.sendP2PPacket(member['id'], d, type)
 	else:
 		Steam.sendP2PPacket(target, d, type)

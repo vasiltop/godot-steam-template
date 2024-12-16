@@ -13,6 +13,9 @@ extends GridContainer
 
 const LOBBY = preload("res://menus/lobby_menu/lobby/lobby.tscn")
 const MEMBER = preload("res://menus/lobby_menu/member/member.tscn")
+const LOBBY_REFRESH_TIME: float = 1
+
+var lobby_refresh_timer: float = 0
 
 func _ready():
 	start_game_button.pressed.connect(start_game)
@@ -63,14 +66,10 @@ func update_members():
 		var n = Steam.getFriendPersonaName(member["id"])
 		inst.get_node("Name").text = n
 
-const LOBBY_REFRESH_TIME: float = 1
-var lobby_refresh_timer: float = 0
-
 func _process(delta):
 	lobby_refresh_timer += delta
 	
 	if lobby_refresh_timer >= LOBBY_REFRESH_TIME:
-		print("refresh")
 		lobby_refresh_timer = 0
 		Lobby.refreshLobbyList(search_name_input.text)
 
